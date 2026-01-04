@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>12 Jyotirlingas - Sacred Pilgrimage Guide</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        /* =========================================
+           ADVANCED CSS DESIGN
+           ========================================= */
+        :root {
+            --primary: #ff6b35;
+            --primary-dark: #e65100;
+            --secondary: #f7931e;
+            --accent: #ffd700;
+            --text-dark: #2d3436;
+            --bg-body: #fff8f0;
+            
+            /* Gradients */
+            --gradient-main: linear-gradient(135deg, #ff6b35 0%, #ff9f43 100%);
+            --gradient-gold: linear-gradient(45deg, #ffd700, #ffa502, #ffd700);
+            --gradient-dark: linear-gradient(to bottom, #2d3436, #000000);
+            
+            /* Glassmorphism */
+            --backdrop-blur: blur(10px);
+            --glass-bg: rgba(255, 255, 255, 0.9);
+            
+            /* Shadows */
+            --shadow-card: 0 10px 30px rgba(0,0,0,0.08);
+            --shadow-hover: 0 20px 40px rgba(255, 107, 53, 0.25);
+        }
+
+        /* --- Global Reset & Typography --- */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-body);
+            background-image: radial-gradient(#ffdbc5 1px, transparent 1px);
+            background-size: 30px 30px;
+            color: var(--text-dark);
+            overflow-x: hidden;
+            line-height: 1.7;
+        }
+
+        h1, h2, h3, h4, .navbar-brand {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* --- Navigation (Glass Effect) --- */
+        .navbar {
+            background: rgba(255, 107, 53, 0.9) !important;
+            backdrop-filter: var(--backdrop-blur);
+            -webkit-backdrop-filter: var(--backdrop-blur);
+            padding: 15px 0;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar-brand {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #fff !important;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .nav-link {
+            color: rgba(255,255,255,0.9) !important;
+            font-weight: 500;
+            margin: 0 5px;
+            border-radius: 20px;
+            transition: all 0.3s;
+        }
+
+        .nav-link:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
+            color: var(--accent) !important;
+        }
+
+        /* --- Hero Section --- */
+        .hero-section {
+            min-height: 100vh;
+            background: var(--gradient-main);
+            position: relative;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            padding-top: 80px;
+            color: white;
+        }
+
+        /* Rotating Background Symbol */
+        .hero-section::before {
+            content: '🕉️';
+            position: absolute;
+            font-size: 40rem;
+            opacity: 0.05;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: rotate 60s linear infinite;
+            z-index: 0;
+        }
+        @keyframes rotate { from { transform: translate(-50%, -50%) rotate(0deg); } to { transform: translate(-50%, -50%) rotate(360deg); } }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-title {
+            font-size: 4.5rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            text-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            font-weight: 300;
+            opacity: 0.95;
+            margin-bottom: 2rem;
+        }
+
+        .hero-image {
+            border-radius: 30px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.25);
+            border: 8px solid rgba(255,255,255,0.2);
+            transform: perspective(1000px) rotateY(-10deg);
+            transition: transform 0.5s ease;
+        }
+
+        .hero-image:hover {
+            transform: perspective(1000px) rotateY(0deg) scale(1.02);
+        }
+
+        /* --- Section Titles --- */
+        .content-section { padding: 80px 0; }
+
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--accent);
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+
+        /* --- Highlights & Features --- */
+        .highlight-card, .benefit-card {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: var(--shadow-card);
+            transition: transform 0.3s;
+            height: 100%;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .highlight-card:hover, .benefit-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .highlight-icon, .benefit-icon {
+            font-size: 3rem;
+            background: var(--gradient-main);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
+        }
+
+        /* --- Temple Cards (The Core Grid) --- */
+        .jyotirlinga-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+        }
+
+        .temple-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-card);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            text-decoration: none;
+            color: inherit;
+            border: 1px solid rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            height: 100%;
+        }
+
+        .temple-card:hover {
+            transform: translateY(-15px);
+            box-shadow: var(--shadow-hover);
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .temple-header {
+            background: var(--gradient-main);
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+            transition: clip-path 0.3s ease;
+        }
+
+        .temple-card:hover .temple-header {
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+        }
+
+        .temple-number {
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.8rem;
+            opacity: 0.9;
+        }
+
+        .temple-name {
+            font-size: 2rem;
+            margin: 5px 0;
+            font-weight: 700;
+        }
+
+        .temple-body {
+            padding: 20px 25px 30px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .temple-description {
+            flex-grow: 1;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .feature-tag {
+            display: inline-block;
+            background: #fff0e6;
+            color: var(--primary-dark);
+            padding: 5px 12px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin: 0 5px 5px 0;
+            transition: background 0.3s;
+        }
+
+        .temple-card:hover .feature-tag {
+            background: var(--primary);
+            color: white;
+        }
+
+        .visit-button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            text-align: center;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            border-radius: 50px;
+            background: transparent;
+            font-weight: 600;
+            margin-top: 20px;
+            transition: all 0.3s;
+        }
+
+        .temple-card:hover .visit-button {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* --- Statistics (Dark Theme) --- */
+        .stats-section {
+            background: var(--gradient-dark);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .stat-item {
+            padding: 20px;
+            border-radius: 15px;
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .stat-number {
+            font-size: 3.5rem;
+            font-weight: 800;
+            background: var(--gradient-gold);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: block;
+        }
+
+        /* --- Contact Form --- */
+        #enquiryForm {
+            border: none;
+            border-radius: 25px;
+            box-shadow: var(--shadow-card);
+            background: rgba(255, 255, 255, 0.9);
+            padding: 40px;
+        }
+
+        .form-control {
+            border-radius: 10px;
+            padding: 12px;
+            border: 1px solid #ddd;
+        }
+
+        .form-control:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 0.2rem rgba(255, 107, 53, 0.25);
+        }
+
+        /* --- Footer --- */
+        .footer {
+            background: #1e1e1e;
+            color: white;
+            padding: 60px 0 20px;
+            text-align: center;
+            border-top: 5px solid var(--primary);
+        }
+
+        /* --- Animations --- */
+        .loading {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+        .loading.loaded {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Mobile Adjustments */
+        @media (max-width: 991px) {
+            .hero-title { font-size: 3rem; }
+            .hero-image { margin-top: 40px; transform: none !important; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#home">
+                <i class="fas fa-om me-2"></i>12 Jyotirlingas
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#overview">Overview</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#temples">Temples</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section id="home" class="hero-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 hero-content">
+                    <h1 class="hero-title">12 Sacred Jyotirlingas</h1>
+                    <p class="hero-subtitle">
+                        A Ready-Made Spiritual Website for Temples & Devotees. Perfect for temple trusts, spiritual organizations, and pilgrimage guides.
+                    </p>
+                    <div class="d-flex gap-3 flex-wrap">
+                        <a href="#overview" class="btn btn-light btn-lg px-4 py-3 rounded-pill fw-bold" style="color: var(--primary);">
+                            <i class="fas fa-map-marked-alt me-2"></i>Sacred Map Overview
+                        </a>
+                        <a href="#contact" class="btn btn-warning btn-lg px-4 py-3 rounded-pill">
+                            <i class="fas me-2"></i>Explore This Website
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-6 text-center">
+                    <img src="https://vedicgoddess.weebly.com/uploads/3/1/4/3/3143584/editor/4105088.jpg?1506110665" 
+                         alt="12 Sacred Jyotirlingas Map" 
+                         class="hero-image img-fluid">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="overview" class="content-section">
+        <div class="container">
+            <h2 class="section-title">Sacred Jyotirlingas Across India</h2>
+
+            <div class="row">
+                <div class="col-lg-12 text-center mb-5">
+                    <img src="https://c9admin.cottage9.com/uploads/5869/12-jyotirlingas-of-india.jpg" 
+                         alt="Map of India showing all 12 sacred Jyotirlinga temples" 
+                         class="img-fluid rounded-4 shadow-lg mb-4 loading">
+                    <p class="lead text-muted loading" style="max-width: 800px; margin: 0 auto;">
+                        The 12 Jyotirlingas are spread across India, from the coastal plains of Gujarat to the towering peaks 
+                        of the Himalayas. Each sacred site represents a unique manifestation of Lord Shiva.
+                    </p>
+                </div>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-md-3">
+                    <div class="highlight-card loading">
+                        <i class="fas fa-map-marked-alt highlight-icon"></i>
+                        <h4>8+ States Covered</h4>
+                        <p>From Gujarat's Somnath to Jharkhand's Vaidyanath.</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="highlight-card loading">
+                        <i class="fas fa-mountain highlight-icon"></i>
+                        <h4>Diverse Terrains</h4>
+                        <p>Coastal temples, mountain peaks, river islands.</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="highlight-card loading">
+                        <i class="fas fa-route highlight-icon"></i>
+                        <h4>Sacred Circuit</h4>
+                        <p>Complete the divine pilgrimage circuit for liberation.</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="highlight-card loading">
+                        <i class="fas fa-history highlight-icon"></i>
+                        <h4>Ancient Legacy</h4>
+                        <p>Millennia-old temples mentioned in Puranas.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section bg-light">
+        <div class="container">
+            <h2 class="section-title">Website Features</h2>
+            <div class="row text-center">
+                <div class="col-md-4 mb-4 loading">
+                    <i class="fas fa-mobile-alt fa-3x text-warning mb-3"></i>
+                    <h5>Mobile Friendly</h5>
+                    <p>Works perfectly on mobile, tablet, and desktop.</p>
+                </div>
+                <div class="col-md-4 mb-4 loading">
+                    <i class="fas fa-bolt fa-3x text-warning mb-3"></i>
+                    <h5>Fast Loading</h5>
+                    <p>Optimized static website for quick performance.</p>
+                </div>
+                <div class="col-md-4 mb-4 loading">
+                    <i class="fas fa-paint-brush fa-3x text-warning mb-3"></i>
+                    <h5>Easy Customization</h5>
+                    <p>Colors, content, and branding can be changed.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section">
+        <div class="container text-center">
+            <h2 class="section-title">Who Is This Website For?</h2>
+            <div class="row">
+                <div class="col-md-3 mb-3"><h4>🛕 Temple Trusts</h4></div>
+                <div class="col-md-3 mb-3"><h4>🙏 Organizations</h4></div>
+                <div class="col-md-3 mb-3"><h4>🌍 Tour Operators</h4></div>
+                <div class="col-md-3 mb-3"><h4>📿 Bloggers</h4></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="stats-section">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-3 col-6">
+                    <div class="stat-item loading">
+                        <span class="stat-number">12</span>
+                        <span>Sacred Jyotirlingas</span>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="stat-item loading">
+                        <span class="stat-number">8+</span>
+                        <span>States Covered</span>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="stat-item loading">
+                        <span class="stat-number">1000+</span>
+                        <span>Years of History</span>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="stat-item loading">
+                        <span class="stat-number">∞</span>
+                        <span>Divine Blessings</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="temples" class="content-section">
+        <div class="container">
+            <h2 class="section-title">Sacred Jyotirlingas</h2>
+            <div class="jyotirlinga-grid">
+                
+                <a href="somanath.html" class="temple-card loading">
+                    <div class="temple-header">
+                        <div class="temple-number">First Jyotirlinga</div>
+                        <h3 class="temple-name">Somnath</h3>
+                        <div class="small"><i class="fas fa-map-marker-alt"></i> Gujarat</div>
+                    </div>
+                    <div class="temple-body">
+                        <div class="temple-description">
+                            The eternal shrine that withstood the tests of time, located on the shores of the Arabian Sea.
+                        </div>
+                        <div class="mb-3">
+                            <span class="feature-tag">Eternal Shrine</span>
+                            <span class="feature-tag">Sea Coast</span>
+                        </div>
+                        <button class="visit-button">View Details</button>
+                    </div>
+                </a>
+
+                <a href="mallikarjuna.html" class="temple-card loading">
+                    <div class="temple-header">
+                        <div class="temple-number">Second Jyotirlinga</div>
+                        <h3 class="temple-name">Mallikarjuna</h3>
+                        <div class="small"><i class="fas fa-map-marker-alt"></i> Andhra Pradesh</div>
+                    </div>
+                    <div class="temple-body">
+                        <div class="temple-description">
+                            Located on Srisailam hills, this is a unique site serving as both a Jyotirlinga and a Shakti Peeth.
+                        </div>
+                        <div class="mb-3">
+                            <span class="feature-tag">Hill Temple</span>
+                            <span class="feature-tag">Shakti Peeth</span>
+                        </div>
+                        <button class="visit-button">View Details</button>
+                    </div>
+                </a>
+
+                <a href="mahakaleshwar.html" class="temple-card loading">
+                    <div class="temple-header">
+                        <div class="temple-number">Third Jyotirlinga</div>
+                        <h3 class="temple-name">Mahakaleshwar</h3>
+                        <div class="small"><i class="fas fa-map-marker-alt"></i> Madhya Pradesh</div>
+                    </div>
+                    <div class="temple-body">
+                        <div class="temple-description">
+                            The only Jyotirlinga facing south (Dakshinmukhi), famous for its divine Bhasma Aarti.
+                        </div>
+                        <div class="mb-3">
+                            <span class="feature-tag">Dakshinmukhi</span>
+                            <span class="feature-tag">Bhasma Aarti</span>
+                        </div>
+                        <button class="visit-button">View Details</button>
+                    </div>
+                </a>
+
+                <a href="omkareshwar.html" class="temple-card loading">
+                    <div class="temple-header">
+                        <div class="temple-number">Fourth Jyotirlinga</div>
+                        <h3 class="temple-name">Omkareshwar</h3>
+                        <div class="small"><i class="fas fa-map-marker-alt"></i> Madhya Pradesh</div>
+                    </div>
+                    <div class="temple-body">
+                        <div class="temple-description">
+                            Located on the Om-shaped Mandhata Island in the Narmada River.
+                        </div>
+                        <div class="mb-3">
+                            <span class="feature-tag">Om Island</span>
+                            <span class="feature-tag">Narmada River</span>
+                        </div>
+                        <button class="visit-button">View Details</button>
+                    </div>
+                </a>
+
+                <a href="kedarnath.html" class="temple-card loading">
+                    <div class="temple-header">
+                        <div class="temple-number">Fifth Jyotirlinga</div>
+                        <h3 class="temple-name">Kedarnath</h3>
+                        <div class="small"><i class="fas fa-map-marker-alt"></i> Uttarakhand</div>
+                    </div>
+                    <div class="temple-body">
+                        <div class="temple-description">
+                            Situated at 3,583 meters in the Himalayas, accessible only 6 months a year.
+                        </div>
+                        <div class="mb-3">
+                            <span class="feature-tag">Himalayan</span>
+                            <span class="feature-tag">High Altitude</span>
+                        </div>
+                        <button class="visit-button">View Details</button>
+                    </div>
+                </a>
+
+                <a href="bhimashankar.html" class="temple-card loading">
+                    <div class="temple-header">
+                        <div class="temple-number">Sixth Jyotirlinga</div>
+                        <h3 class="temple-name">Bhimashankar</h3>
+                        <div class="small"><i class="fas fa-map-marker-alt"></i> Maharashtra</div>
+                    </div>
+                    <div class="temple-body">
+                        <div class="temple-description">
+                            Nestled in the dense forests of the Western Ghats, surrounded by wildlife sanctuary.
+                        </div>
+                        <div class="mb-3">
+                            <span class="feature-tag">Wildlife</span>
+                            <span class="feature-tag">Forest Temple</span>
+                        </div>
+                        <button class="visit-button">View Details</button>
+                    </div>
+                </a>
+
+                <a href="kashi_vishwanath.html" class="temple-card loading">
+                    <div class="temple-header">
+                        <div class="temple-number">Seventh Jyotirlinga</div>
+                        <h3 class="temple-name">Kashi Vishwanath</h3>
+                        <div class="small"><i class="fas fa-map-marker-alt"></i> Uttar Pradesh</div>
+                    </div>
+                    <div class="temple-body">
+                        <div class="temple-description">
+                            The most famous Jyotirlinga in Varanasi, with gold-plated spires and the divine corridor.
+                        </div>
+                        <div class="mb-3">
+                            <span class="feature-tag">Golden Spires</span>
+                            <span class="feature-tag">Varanasi</span>
+                        </div>
+                        <button class="visit-button">View Details</button>
+                    </div>
+                </a>
+
+                <a href="vaidyanath.html" class="temple-card loading">
+                    <div class="temple-header">
+                        <div class="temple-number">Eighth Jyotirlinga</div>
+                        <h3 class="temple-name">Vaidyanath</h3>
+                        <div class="small"><i class="fas fa-map-marker-alt"></i> Jharkhand</div>
+                    </div>
+                    <div class="temple-body">
+                        <div class="temple-description">
+                            Known as Baba Baidyanath Dham, famous for miraculous healing powers and Kanwar Yatra.
+                        </div>
+                        <div class="mb-3">
+                            <span class="feature-tag">Healing Powers</span>
+                            <span class="feature-tag">Kanwar Yatra</span>
+                        </div>
+                        <button class="visit-button">View Details</button>
+                    </div>
+                </a>
+
+                <a href="nageshwar.html" class="temple-card loading">
+                    <div class="temple-header">
+                        <div class="temple-number">Ninth Jyotirlinga</div>
+                        <h3 class="temple-name">Nageshwar</h3>
+                        <div class="small"><i class="fas fa-map-marker-alt"></i> Gujarat</div>
+                    </div>
+                    <div class="temple-body">
+                        <div class="temple-description">
+                            Located on the Saurashtra coast, featuring a 25-meter Shiva statue and protection from poisons.
+                        </div>
+                        <div class="mb-3">
+                            <span class="feature-tag">Coastal</span>
+                            <span class="feature-tag">Giant Statue</span>
+                        </div>
+                        <button class="visit-button">View Details</button>
+                    </div>
+                </a>
+
+                <a href="trimbakeshwar.html" class="temple-card loading">
+                    <div class="temple-header">
+                        <div class="temple-number">Tenth Jyotirlinga</div>
+                        <h3 class="temple-name">Trimbakeshwar</h3>
+                        <div class="small"><i class="fas fa-map-marker-alt"></i> Maharashtra</div>
+                    </div>
+                    <div class="temple-body">
+                        <div class="temple-description">
+                            Unique three-faced lingam representing Brahma, Vishnu, and Shiva at the origin of Godavari.
+                        </div>
+                        <div class="mb-3">
+                            <span class="feature-tag">Three-faced</span>
+                            <span class="feature-tag">River Origin</span>
+                        </div>
+                        <button class="visit-button">View Details</button>
+                    </div>
+                </a>
+
+                <a href="rameshwaram.html" class="temple-card loading">
+                    <div class="temple-header">
+                        <div class="temple-number">Eleventh Jyotirlinga</div>
+                        <h3 class="temple-name">Rameshwaram</h3>
+                        <div class="small"><i class="fas fa-map-marker-alt"></i> Tamil Nadu</div>
+                    </div>
+                    <div class="temple-body">
+                        <div class="temple-description">
+                            Jyotirlinga established by Lord Rama, featuring India's longest temple corridor.
+                        </div>
+                        <div class="mb-3">
+                            <span class="feature-tag">Rama's Temple</span>
+                            <span class="feature-tag">Corridor</span>
+                        </div>
+                        <button class="visit-button">View Details</button>
+                    </div>
+                </a>
+
+                <a href="grishneshwar.html" class="temple-card loading">
+                    <div class="temple-header">
+                        <div class="temple-number">Twelfth Jyotirlinga</div>
+                        <h3 class="temple-name">Grishneshwar</h3>
+                        <div class="small"><i class="fas fa-map-marker-alt"></i> Maharashtra</div>
+                    </div>
+                    <div class="temple-body">
+                        <div class="temple-description">
+                            The final Jyotirlinga near UNESCO World Heritage Ellora Caves, embodying compassion.
+                        </div>
+                        <div class="mb-3">
+                            <span class="feature-tag">UNESCO</span>
+                            <span class="feature-tag">Compassion</span>
+                        </div>
+                        <button class="visit-button">View Details</button>
+                    </div>
+                </a>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about-section content-section bg-light">
+        <div class="container">
+            <h2 class="section-title">About Jyotirlingas</h2>
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center mb-5">
+                    <p class="lead text-muted">
+                        The 12 Jyotirlingas are the most sacred shrines of Lord Shiva, representing his infinite nature as columns of light (Jyoti). Visiting these shrines is considered the ultimate pilgrimage for devotees.
+                    </p>
+                </div>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-md-3">
+                    <div class="benefit-card loading">
+                        <i class="fas fa-peace benefit-icon"></i>
+                        <h4>Spiritual Peace</h4>
+                        <p>Experience divine tranquility.</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="benefit-card loading">
+                        <i class="fas fa-shield-alt benefit-icon"></i>
+                        <h4>Protection</h4>
+                        <p>Divine protection from obstacles.</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="benefit-card loading">
+                        <i class="fas fa-star benefit-icon"></i>
+                        <h4>Liberation</h4>
+                        <p>Attain Moksha from the cycle of birth.</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="benefit-card loading">
+                        <i class="fas fa-heart benefit-icon"></i>
+                        <h4>Blessings</h4>
+                        <p>Receive health and prosperity.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="content-section">
+        <div class="container">
+            <h2 class="section-title">Explore This Website</h2>
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <form id="enquiryForm" class="loading">
+                        <div class="mb-3">
+                            <label class="form-label">Your Name</label>
+                            <input type="text" id="name" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Email Address</label>
+                            <input type="email" id="email" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Message</label>
+                            <textarea id="message" class="form-control" rows="4" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-warning w-100 rounded-pill fw-bold">
+                            <i class="fas fa-paper-plane me-2"></i>Send Enquiry
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <h3 class="mb-4"><i class="fas fa-om me-2"></i>12 Sacred Jyotirlingas</h3>
+            <p class="text-white-50">Embark on the ultimate spiritual journey to Lord Shiva's divine manifestations.</p>
+            
+            <div class="mt-4 mb-4">
+                <a href="mailto:ysnandish9@gmail.com" class="btn btn-warning me-2 rounded-pill">
+                    <i class="fas fa-envelope"></i> Email
+                </a>
+                <a href="https://wa.me/919980209058" class="btn btn-success rounded-pill">
+                    <i class="fab fa-whatsapp"></i> WhatsApp
+                </a>
+            </div>
+
+            <div class="border-top border-secondary pt-4 mt-4 text-white-50">
+                <p>&copy; 2025 12 Jyotirlingas Pilgrimage Guide.</p>
+                <p><strong>ॐ नमः शिवाय</strong> - Om Namah Shivaya</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Smooth scrolling for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 100) {
+                navbar.style.background = 'rgba(255, 107, 53, 0.98)';
+                navbar.style.boxShadow = '0 5px 20px rgba(0,0,0,0.1)';
+            } else {
+                navbar.style.background = 'rgba(255, 107, 53, 0.9)';
+                navbar.style.boxShadow = '0 4px 30px rgba(0, 0, 0, 0.1)';
+            }
+        });
+
+        // Loading animation observer
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.classList.add('loaded');
+                    }, index * 100);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.loading').forEach(element => {
+            observer.observe(element);
+        });
+
+        // Stats counter animation
+        function animateStats() {
+            const stats = document.querySelectorAll('.stat-number');
+            stats.forEach(stat => {
+                const value = stat.innerText;
+                if (value !== '∞') {
+                    const numValue = parseInt(value.replace('+', ''));
+                    let current = 0;
+                    const increment = numValue / 50;
+                    const timer = setInterval(() => {
+                        current += increment;
+                        if (current >= numValue) {
+                            stat.innerText = value;
+                            clearInterval(timer);
+                        } else {
+                            stat.innerText = Math.floor(current) + (value.includes('+') ? '+' : '');
+                        }
+                    }, 40);
+                }
+            });
+        }
+
+        const statsObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateStats();
+                    statsObserver.unobserve(entry.target);
+                }
+            });
+        });
+
+        const statsSection = document.querySelector('.stats-section');
+        if (statsSection) {
+            statsObserver.observe(statsSection);
+        }
+
+        // Form submission stub
+        document.getElementById("enquiryForm").addEventListener("submit", function(e) {
+            e.preventDefault();
+            alert("Thank you! Your enquiry has been sent. We will contact you soon.");
+        });
+    </script>
+</body>
+</html>
