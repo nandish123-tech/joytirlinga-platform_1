@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | Temple Admin</title>
+    
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+
+    <div class="bg-shape shape-1"></div>
+    <div class="bg-shape shape-2"></div>
+
+    <nav class="glass-nav">
+        <div class="nav-brand">
+            <i class="fas fa-om"></i> Admin Panel
+        </div>
+        <div class="nav-user">
+            <div class="admin-profile">
+                <img src="https://ui-avatars.com/api/?name=Admin&background=ff6b35&color=fff" alt="Admin">
+                <span>Administrator</span>
+            </div>
+            <button class="btn-logout" onclick="logout()">
+                <i class="fas fa-sign-out-alt"></i> Logout
+            </button>
+        </div>
+    </nav>
+
+    <div class="dashboard-container">
+        
+        <div class="stats-row">
+            <div class="glass-card stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-envelope-open-text"></i>
+                </div>
+                <div class="stat-info">
+                    <h3>Total Enquiries</h3>
+                    <h1 id="totalCount">0</h1>
+                </div>
+            </div>
+            </div>
+
+        <div class="glass-card table-section">
+            <div class="section-header">
+                <h3><i class="fas fa-list"></i> Recent Messages</h3>
+                <button class="btn-refresh" onclick="fetchData()">
+                    <i class="fas fa-sync-alt"></i> Refresh
+                </button>
+            </div>
+
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Message</th>
+                            <th>Date & Time</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="table">
+                        <tr>
+                            <td colspan="5" style="text-align:center; padding: 30px;">
+                                <i class="fas fa-spinner fa-spin"></i> Loading data...
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Check Auth immediately
+        const token = localStorage.getItem("token");
+        if (!token) window.location.href = "admin-login.html";
+
+        // Fetch Function
+        async function fetchData() {
+            const table = document.getElementById("table");
+            const countEl = document.getElementById("totalCount");
+            
+            // Show loading
+            table.innerHTML = `<tr><td colspan="5" class="text-center"><i class="fas fa-spinner fa-spin"></i> Updating...</td></tr>`;
+
+            try {
+                const res = await fetch("http://localhost:5000/api/enquiry", {
+                    headers: { Authorization: token }
+                });
+
+                if (!res.ok) {
+                    if (res.status === 401 || res.status === 403) logout(); // Token expired
+                    throw new Error("Failed to fetch");
+                }
+
+                const data = await res.json();
+                
+                // Update Count
+                countEl.innerText = data.length;
+
+                // Update Table
+                if (data.length === 0) {
+                    table.innerHTML = `<tr><td colspan="5" class="text-center">No enquiries found.</td></tr>`;
+                } else {
+                    let rows = "";
+                    // Sort by newest first (assuming createdAt exists)
+                    data.reverse().forEach(e => {
+                        const date = new Date(e.createdAt).toLocaleDateString('en-IN');
+                        const time = new Date(e.createdAt).toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit' });
+                        
+                        rows += `
+                            <tr>
+                                <td>
+                                    <div class="user-cell">
+                                        <div class="user-avatar">${e.name.charAt(0).toUpperCase()}</div>
+                                        <span>${e.name}</span>
+                                    </div>
+                                </td>
+                                <td><a href="mailto:${e.email}" class="email-link">${e.email}</a></td>
+                                <td><div class="message-content">${e.message}</div></td>
+                                <td>
+                                    <div class="date-cell">
+                                        <span>${date}</span>
+                                        <small>${time}</small>
+                                    </div>
+                                </td>
+                                <td>
+                                    <button class="btn-action" title="Delete (Demo)"><i class="fas fa-trash"></i></button>
+                                </td>
+                            </tr>
+                        `;
+                    });
+                    table.innerHTML = rows;
+                }
+
+            } catch (err) {
+                console.error(err);
+                table.innerHTML = `<tr><td colspan="5" class="text-center error-text">Error loading data. Is the backend running?</td></tr>`;
+            }
+        }
+
+        // Logout
+        function logout() {
+            localStorage.removeItem("token");
+            window.location.href = "admin-login.html";
+        }
+
+        // Load data on start
+        fetchData();
+    </script>
+</body>
+</html>

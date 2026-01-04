@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Portal - Jyotirlinga Darshan</title>
+    
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+
+    <div class="bg-shape shape-1"></div>
+    <div class="bg-shape shape-2"></div>
+    <div class="bg-shape shape-3"></div>
+
+    <div class="login-container">
+        <div class="glass-card">
+            
+            <div class="card-header">
+                <div class="icon-circle">
+                    <i class="fas fa-user-shield"></i>
+                </div>
+                <h2>Admin Portal</h2>
+                <p>Secure Access Only</p>
+            </div>
+
+            <form id="loginForm">
+                <div class="input-group">
+                    <i class="fas fa-envelope input-icon"></i>
+                    <input type="email" id="email" placeholder=" " required autocomplete="off">
+                    <label for="email">Admin Email</label>
+                    <div class="input-highlight"></div>
+                </div>
+
+                <div class="input-group">
+                    <i class="fas fa-lock input-icon"></i>
+                    <input type="password" id="password" placeholder=" " required>
+                    <label for="password">Password</label>
+                    <div class="input-highlight"></div>
+                    <i class="fas fa-eye toggle-password" id="togglePassword"></i>
+                </div>
+
+                <button type="submit" class="btn-neon" id="loginBtn">
+                    <span>Login Dashboard</span>
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+            </form>
+
+            <div id="error" class="error-msg"></div>
+            
+            <div class="card-footer">
+                <a href="#" class="forgot-link">Forgot Password?</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const form = document.getElementById("loginForm");
+        const errorEl = document.getElementById("error");
+        const loginBtn = document.getElementById("loginBtn");
+        const togglePassword = document.getElementById("togglePassword");
+        const passwordInput = document.getElementById("password");
+
+        // Toggle Password Visibility
+        togglePassword.addEventListener('click', function() {
+            const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordInput.setAttribute('type', type);
+            this.classList.toggle('fa-eye');
+            this.classList.toggle('fa-eye-slash');
+        });
+
+        // Form Submission
+        form.addEventListener("submit", async (e) => {
+            e.preventDefault();
+            
+            // UI Loading State
+            loginBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Verifying...';
+            loginBtn.style.opacity = '0.8';
+            errorEl.style.display = 'none';
+
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
+
+            try {
+                // Simulating network delay for effect (Remove setTimeout in production)
+                // const res = await fetch("http://localhost:5000/api/admin/login", { ...
+                
+                const res = await fetch("http://localhost:5000/api/admin/login", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({ email, password })
+                });
+
+                if (!res.ok) {
+                    throw new Error("Invalid Credentials"); 
+                }
+
+                const data = await res.json();
+
+                if (data.token) {
+                    localStorage.setItem("token", data.token);
+                    
+                    // Success Animation
+                    loginBtn.innerHTML = '<i class="fas fa-check"></i> Success!';
+                    loginBtn.style.background = 'linear-gradient(45deg, #00b09b, #96c93d)';
+                    
+                    setTimeout(() => {
+                        window.location.href = "admin-dashboard.html";
+                    }, 800);
+                } else {
+                    throw new Error(data.message || "Login failed");
+                }
+
+            } catch (err) {
+                // Error State
+                loginBtn.innerHTML = '<span>Login Dashboard</span> <i class="fas fa-arrow-right"></i>';
+                loginBtn.style.opacity = '1';
+                
+                errorEl.style.display = 'block';
+                errorEl.innerHTML = `<i class="fas fa-exclamation-circle"></i> ${err.message || "Server error"}`;
+                
+                // Shake Animation
+                const card = document.querySelector('.glass-card');
+                card.classList.add('shake');
+                setTimeout(() => card.classList.remove('shake'), 500);
+                
+                console.error(err);
+            }
+        });
+    </script>
+</body>
+</html>
