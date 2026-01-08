@@ -338,6 +338,100 @@
             .hero-title { font-size: 3rem; }
             .content-section { padding: 50px 0; }
         }
+        /* =========================================
+           9. Pilgrimage Services Cards
+           ========================================= */
+        .pilgrimage-services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 50px;
+            }
+
+            .service-card {
+            background: linear-gradient(145deg, #ffffff, #f2f2f2);
+            border-radius: 18px;
+            padding: 30px 25px;
+            text-align: center;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+            transition: all 0.35s ease;
+            position: relative;
+            overflow: hidden;
+            }
+
+            .service-card::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at top, rgba(255,255,255,0.6), transparent 60%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            pointer-events: none;
+            }
+            .service-btn {
+                position: relative;
+                z-index: 10;
+                }
+
+            .service-card:hover::before {
+            opacity: 1;
+            }
+
+            .service-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            }
+
+            .service-icon {
+            font-size: 48px;
+            margin-bottom: 15px;
+            }
+
+            .service-card h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: #ff6b35;
+            }
+
+            .service-card p {
+            font-size: 1rem;
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 22px;
+            }
+
+            .service-btn {
+            display: inline-block;
+            padding: 12px 28px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 15px;
+            text-decoration: none;
+            color: #fff;
+            background: linear-gradient(135deg, #ff6b35, #f7931e);
+            box-shadow: 0 8px 25px rgba(255, 107, 53, 0.45);
+            transition: all 0.3s ease;
+            border: none;
+            }
+
+            .service-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 35px rgba(255, 107, 53, 0.65);
+            }
+
+            .service-btn.disabled {
+            background: linear-gradient(135deg, #bdbdbd, #9e9e9e);
+            box-shadow: none;
+            cursor: not-allowed;
+            }
+
+            .tours {
+            border-top: 6px solid #3f8cff;
+            }
+
+            .hotels {
+            border-top: 6px solid #ffb300;
+            }
     </style>
 </head>
 <body>
@@ -649,16 +743,52 @@
             </div>
         </div>
     </section>
-    <section style="margin-top:40px; padding:20px; background:#fff8e1; border-radius:12px;">
-      <h3>🏨 Hotels Near Somnath Temple</h3>
-      <p>
-        Pilgrims can find comfortable and affordable hotels near Somanath Temple
-        through our trusted booking partners.
-      </p>
-      <button class="btn btn-warning" disabled>
-        Coming Soon – Hotel Booking
-      </button>
-    </section>
+       <!-- Pilgrimage Services Section -->
+<section class="content-section bg-light">
+  <div class="container">
+    <h2 class="section-title">Travel & Stay</h2>
+
+    <div class="pilgrimage-services">
+      <!-- cards here -->
+    </div>
+
+  </div>
+</section>
+
+  <!-- Tours Card -->
+  <div class="service-card tours">
+    <div class="service-icon">🎫</div>
+    <h3>Tours & Activities</h3>
+    <p>
+      Book temple tours, VIP darshan assistance, local sightseeing,
+      and spiritual experiences through our trusted partner.
+    </p>
+
+    <a
+      href="https://klook.tpo.li/2nLXPTfU"
+      target="_blank"
+      rel="noopener"
+      class="service-btn"
+    >
+      Explore Tours & Activities
+    </a>
+  </div>
+
+  <!-- Hotels Card -->
+  <div class="service-card hotels">
+    <div class="service-icon">🏨</div>
+    <h3>Hotels Near This Temple</h3>
+    <p>
+      Comfortable, verified, and pilgrim-friendly hotels near the temple
+      will be available very soon.
+    </p>
+
+    <button class="service-btn disabled" disabled>
+      Coming Soon
+    </button>
+  </div>
+
+</section>
 
     <footer id="contact" class="footer">
         <div class="container">
